@@ -4,7 +4,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 /*
- * Demonstrando a troca de mensagens entre processos através de sockets 
+ * Demonstrando a troca de mensagens entre processos atravï¿½s de sockets 
  * multithreading
  * Classe que implementa uma Thread para tratamento de um Cliente
  */

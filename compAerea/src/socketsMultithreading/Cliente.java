@@ -26,16 +26,15 @@ public class Cliente {
 		 * no localhost, porta 8090
 		 */
 		Socket cliente = new Socket(this.host, this.porta);
-		System.out.println("Cliente conectado!");
-		TelaCliente tc = new TelaCliente();
-                tc.setVisible(true);
+		System.out.println("Cliente conectado!");		
 		/*scanner para leitura da mensagem digitada
 			pelo usuario*/
 		Scanner teclado = new Scanner(System.in);
 		//buffer de saida
 		PrintStream saida = new PrintStream(
 				cliente.getOutputStream());
-		
+		TelaCliente tc = new TelaCliente();
+                tc.setVisible(true);
 		while(teclado.hasNextLine()) {
 			                 
 			saida.println(teclado.nextLine());

@@ -32,4 +32,24 @@ public class assentoDAO {
         System.out.println(assento);
         return assento;
     }
+     
+     public int teste(){
+        PreparedStatement sql; 
+        int assento=0;
+        try{
+            sql=(PreparedStatement) BancoDados.getInstance().prepareStatement
+            ("select *from assento");
+            ResultSet rs = sql.executeQuery();
+            
+            while(rs.next()){
+                assento++;
+            }// fim do while
+            
+        }// fim do try
+        catch(SQLException ex) {
+          System.out.println(ex);
+        }
+        System.out.println(assento);
+        return assento;
+    }
 }
