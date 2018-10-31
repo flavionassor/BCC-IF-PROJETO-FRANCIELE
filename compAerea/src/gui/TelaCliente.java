@@ -195,7 +195,7 @@ public class TelaCliente extends javax.swing.JFrame {
 		
 			                 
 			
-        TelaReserva tr = new TelaReserva(aux);
+        TelaReserva tr = new TelaReserva(aux,cliente);
         tr.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -3,16 +3,25 @@ package gui;
 
 import dao.assentoDAO;
 import dao.reservaDAO;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TelaReserva extends javax.swing.JFrame {
     private int codAviao;
     private int qntAssentos;
+    Socket cliente;
     
     public TelaReserva() {
         initComponents();       
     }
-    public TelaReserva(int codAviao) {
+    public TelaReserva(int codAviao, Socket cliente) {
         initComponents();
+        this.cliente = cliente;
         this.codAviao = codAviao;  
         //Arrumar valor da combobox para qntmaxima de assentos disponiveis
         jComboBox1.removeAllItems();
@@ -112,6 +121,15 @@ public class TelaReserva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            Scanner s = new Scanner(System.in);
+            PrintStream saida = new PrintStream(cliente.getOutputStream());
+            saida.println("Ta indo não desiste!");//Insira aqui a saida desejado para inserção na tabela reservas!
+            
+        } catch (IOException ex) {
+            Logger.getLogger(TelaReserva.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
