@@ -5,22 +5,36 @@
  */
 package gui;
 
+import dao.vooDAO;
 import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
 import java.net.UnknownHostException;
-import socketsMultithreading.Cliente;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author 13161000252
  */
 public class TelaCliente extends javax.swing.JFrame {
-
+    Socket cliente;
     /**
      * Creates new form TelaCliente
      */
     public TelaCliente() {
         initComponents();        
     }
+    public TelaCliente(String host, int porta) throws IOException {//Construtor para conexao com servidor!
+        initComponents();
+        cliente = new Socket(host, porta);
+	System.out.println("Cliente conectado!");
+    }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +63,7 @@ public class TelaCliente extends javax.swing.JFrame {
         jLabel1.setText("Tela Cliente");
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### - ##:##")));
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####-##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -60,7 +74,7 @@ public class TelaCliente extends javax.swing.JFrame {
         });
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### - ##:##")));
+            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####-##:##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -70,11 +84,14 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setText("1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+
+        jTextField2.setText("1");
 
         jLabel2.setText("Origem");
 
@@ -155,23 +172,41 @@ public class TelaCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
-
-    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
-
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Fazer Pedido para acessar aviao aqui!
-        TelaReserva tr = new TelaReserva();
+        int aux=10;
+        vooDAO vDAO = new vooDAO();
+        try {
+        Scanner teclado = new Scanner(System.in);
+		//buffer de saida
+        
+            PrintStream saida = new PrintStream(cliente.getOutputStream());
+            aux = vDAO.codVoo(jTextField1.getText(),jFormattedTextField1.getText(),jTextField2.getText(),jFormattedTextField2.getText());
+            saida.println("acessando dados aviao: " + aux);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		
+		
+			                 
+			
+        TelaReserva tr = new TelaReserva(aux);
         tr.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jFormattedTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField2ActionPerformed
+
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,7 +238,11 @@ public class TelaCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCliente().setVisible(true);  
+                try {  
+                    new TelaCliente("127.0.0.1", 8090).setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             
         });

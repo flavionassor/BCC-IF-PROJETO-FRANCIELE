@@ -1,7 +1,15 @@
 package socketsMultithreading;
 
+import gui.TelaReserva;
 import java.io.InputStream;
 import java.util.Scanner;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * Demonstrando a troca de mensagens entre processos atrav�s de sockets 

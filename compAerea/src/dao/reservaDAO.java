@@ -13,7 +13,7 @@ public class reservaDAO {
         int assento=0;
         try{
             sql=(PreparedStatement) BancoDados.getInstance().prepareStatement
-            ("select *from assento where aviao = " + codAviao + ";");
+            ("select A.cod from assento A where A.aviao_cod = " + codAviao + " and A.cod not in(select R.assento_cod from reserva R);");
             ResultSet rs = sql.executeQuery();
             
             while(rs.next()){
@@ -24,7 +24,7 @@ public class reservaDAO {
         catch(SQLException ex) {
           System.out.println(ex);
         }
-        System.out.println(assento);
+        System.out.println("quantidade de assentos vagos que o voo possui: " + assento);
         return assento;
     }
 }

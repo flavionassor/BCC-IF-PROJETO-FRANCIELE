@@ -1,5 +1,6 @@
 package socketsMultithreading;
 
+import gui.TelaCliente;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -22,9 +23,6 @@ public class ServidorMultithreading {
 	} 
 	
 	public void executa() throws IOException {
-		/*
-		 * Iniciando o servidor, na porta 8090
-		 */
 		ServerSocket servidor = new ServerSocket(this.porta);
 		System.out.println("Servidor aguardando requisi��es "+
 				"na porta 8090...");
@@ -40,9 +38,11 @@ public class ServidorMultithreading {
 				cliente.getInetAddress().getHostAddress());
 			
 			//adicionando saida do cliente a lista de clientes
+                        
 			PrintStream ps = new PrintStream(
 					cliente.getOutputStream());
 			this.clientes.add(ps);
+                        TelaCliente tcliente = new TelaCliente();
 			
 			//iniciando uma thread para o tratamento do Cliente
 			TrataCliente tc = new TrataCliente(
