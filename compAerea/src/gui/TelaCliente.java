@@ -6,7 +6,10 @@
 package gui;
 
 import dao.vooDAO;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -186,11 +189,18 @@ public class TelaCliente extends javax.swing.JFrame {
         
             PrintStream saida = new PrintStream(cliente.getOutputStream());
             aux = vDAO.codVoo(jTextField1.getText(),jFormattedTextField1.getText(),jTextField2.getText(),jFormattedTextField2.getText());
-            saida.println("acessando dados aviao: " + aux);
+            saida.println("" + aux);
+            InputStream input = cliente.getInputStream();
+            BufferedReader in = new BufferedReader(new InputStreamReader(input));
+            String mensagem = Integer.toString(aux); 
+            mensagem = in.readLine();
+            
+            System.out.println("Mensagem recebida do servidor: " + mensagem);
             
         } catch (IOException ex) {
             Logger.getLogger(TelaCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
 		
 		
 			                 

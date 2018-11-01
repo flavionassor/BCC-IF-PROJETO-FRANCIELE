@@ -46,7 +46,7 @@ public class ServidorMultithreading {
 			
 			//iniciando uma thread para o tratamento do Cliente
 			TrataCliente tc = new TrataCliente(
-					cliente.getInputStream(), this);
+					cliente.getInputStream(), this, cliente);
 			tc.start();
 		}
 	}
