@@ -18,10 +18,9 @@ public class assentoDAO {
             ("SELECT DISTINCT A.COD FROM ASSENTO A, RESERVA R WHERE "+ idavi + " = A.AVIAO_COD AND A.COD NOT IN (SELECT RESERVA.ASSENTO_COD FROM RESERVA);");
             ResultSet rs = sql.executeQuery();
             
-            while(rs.next()){
-                assento aa= new assento();                
-                aa.setCod(rs.getString("cod"));
-                assento.add(aa);
+            while(rs.next()){               
+                //aa.setCod();
+                assento.add(rs.getString("cod"));
             }// fim do while
             
         }// fim do try

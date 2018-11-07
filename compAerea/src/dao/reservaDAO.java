@@ -1,6 +1,7 @@
 
 package dao;
 
+import bean.reserva;
 import com.mysql.jdbc.PreparedStatement;
 import conexao.BancoDados;
 import java.sql.ResultSet;
@@ -26,5 +27,19 @@ public class reservaDAO {
         }
         System.out.println("quantidade de assentos vagos que o voo possui: " + assento);
         return assento;
+    }
+    
+    public void gravar(reserva R){
+        PreparedStatement sql;
+        try{
+        sql=(PreparedStatement) BancoDados.getInstance().prepareStatement
+        ("insert into reserva(cod, cpf, assento_cod) values (null,?,?)");
+        sql.setString(1,R.getCpf());
+        sql.setString(2,R.getAssento_cod());
+        sql.execute();
+        }
+        catch(SQLException ex) {
+          System.out.println(ex);
+        }
     }
 }

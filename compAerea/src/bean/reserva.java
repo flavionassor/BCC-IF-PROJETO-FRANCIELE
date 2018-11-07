@@ -1,7 +1,7 @@
 package bean;
 public class reserva {
-    private int cod, codvoo, codassento;
-    private String cpf;
+    private int cod;
+    private String cpf, assento_cod;
 
     public int getCod() {
         return cod;
@@ -11,22 +11,6 @@ public class reserva {
         this.cod = cod;
     }
 
-    public int getCodvoo() {
-        return codvoo;
-    }
-
-    public void setCodvoo(int codvoo) {
-        this.codvoo = codvoo;
-    }
-
-    public int getCodassento() {
-        return codassento;
-    }
-
-    public void setCodassento(int codassento) {
-        this.codassento = codassento;
-    }
-
     public String getCpf() {
         return cpf;
     }
@@ -34,6 +18,14 @@ public class reserva {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-    
+
+    public String getAssento_cod() {
+        return assento_cod;
+    }
+
+    public void setAssento_cod(String assento_cod) {
+        this.assento_cod = assento_cod;
+    }
+
     
 }
