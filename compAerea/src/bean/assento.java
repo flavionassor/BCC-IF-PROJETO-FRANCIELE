@@ -1,13 +1,13 @@
 package bean;
 
 public class assento {
-    private int cod, codaviao;
-
-    public int getCod() {
+    private int  codaviao;
+    private String cod;
+    public String getCod() {
         return cod;
     }
 
-    public void setCod(int cod) {
+    public void setCod(String cod) {
         this.cod = cod;
     }
 

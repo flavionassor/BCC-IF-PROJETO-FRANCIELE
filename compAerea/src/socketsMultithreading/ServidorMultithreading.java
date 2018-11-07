@@ -1,11 +1,13 @@
 package socketsMultithreading;
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import gui.TelaCliente;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 import javax.swing.JTextField;
 
 /*
@@ -16,13 +18,20 @@ import javax.swing.JTextField;
 public class ServidorMultithreading {
 	private int porta;
 	private ArrayList<PrintStream> clientes;
-	
+	public ArrayList<Semaphore> lista; 
+        public ArrayList<String> id;
 	public ServidorMultithreading(int porta) {
+                this.id = new ArrayList<>();
+                lista = new ArrayList<>();
 		this.porta = porta;
 		this.clientes = new ArrayList<PrintStream>();
+                for(int i=0; i < 6 ;i++){         
+                    Semaphore s = new Semaphore(1);
+                    this.lista.add(s);
+                }
 	} 
 	
-	public void executa() throws IOException {
+	public void executa() throws IOException, InterruptedException {
 		ServerSocket servidor = new ServerSocket(this.porta);
 		System.out.println("Servidor aguardando requisi��es "+
 				"na porta 8090...");
@@ -46,12 +55,13 @@ public class ServidorMultithreading {
 			
 			//iniciando uma thread para o tratamento do Cliente
 			TrataCliente tc = new TrataCliente(
-					cliente.getInputStream(), this, cliente);
-			tc.start();
+					cliente.getInputStream(), this, cliente, lista);
+			
+                        tc.start();
 		}
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		try {
 			/*
 			 * Criando uma instancia do Servidor e o executando

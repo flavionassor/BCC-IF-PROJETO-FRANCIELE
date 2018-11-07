@@ -3,14 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/flavio/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/socketsMultithreading/ServidorMultithreading.java</file>
-            <file>file:/C:/Users/flavio/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/dao/reservaDAO.java</file>
-            <file>file:/C:/Users/flavio/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/gui/TelaReserva.java</file>
-            <file>file:/C:/Users/flavio/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/gui/TelaCadastroAdm.java</file>
-            <file>file:/C:/Users/flavio/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/dao/assentoDAO.java</file>
-            <file>file:/C:/Users/flavio/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/socketsMultithreading/Cliente.java</file>
-            <file>file:/C:/Users/flavio/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/gui/TelaCliente.java</file>
-            <file>file:/C:/Users/flavio/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/socketsMultithreading/TrataCliente.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/gui/TelaCadastroAdm.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/dao/reservaDAO.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/bean/assento.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/dao/aviaoDAO.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/socketsMultithreading/TrataCliente.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/socketsMultithreading/ServidorMultithreading.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/gui/TelaReserva.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/dao/assentoDAO.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/dao/vooDAO.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/gui/TelaCliente.java</file>
+            <file>file:/C:/Users/13161000266/Documents/GitHub/BCC-IF-PROJETO-FRANCIELE/compAerea/src/gui/SelecaoAssento.java</file>
         </group>
     </open-files>
 </project-private>

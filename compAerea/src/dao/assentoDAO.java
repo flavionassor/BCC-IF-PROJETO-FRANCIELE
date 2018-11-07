@@ -15,13 +15,12 @@ public class assentoDAO {
         ArrayList assento = new ArrayList();
         try{
             sql=(PreparedStatement) BancoDados.getInstance().prepareStatement
-            ("SELECT DISTINCT A.IDASSENTO, A.AVIAO_IDAVIAO FROM ASSENTO A, AVIAO B WHERE A.IDASSENTO <= B.QNTASSENTO AND A.AVIAO_IDAVIAO = " + idavi + ";");
+            ("SELECT DISTINCT A.COD FROM ASSENTO A, RESERVA R WHERE "+ idavi + " = A.AVIAO_COD AND A.COD NOT IN (SELECT RESERVA.ASSENTO_COD FROM RESERVA);");
             ResultSet rs = sql.executeQuery();
             
             while(rs.next()){
                 assento aa= new assento();                
-                aa.setCod(rs.getInt("idassento"));
-                aa.setCodaviao(rs.getInt("aviao_idaviao"));
+                aa.setCod(rs.getString("cod"));
                 assento.add(aa);
             }// fim do while
             
