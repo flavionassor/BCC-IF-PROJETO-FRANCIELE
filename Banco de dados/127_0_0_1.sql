@@ -1,5 +1,29 @@
-﻿  CREATE DATABASE compaerea;
-  use compaerea;
+-- phpMyAdmin SQL Dump
+-- version 4.1.14
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: 08-Nov-2018 às 11:45
+-- Versão do servidor: 5.6.17
+-- PHP Version: 5.5.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `compaerea`
+--
+CREATE DATABASE IF NOT EXISTS `compaerea` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `compaerea`;
+
+-- --------------------------------------------------------
+
 --
 -- Estrutura da tabela `assento`
 --
@@ -21,10 +45,27 @@ INSERT INTO `assento` (`cod`, `aviao_cod`) VALUES
 ('a01a03', 1),
 ('a01a04', 1),
 ('a01a05', 1),
+('a01a06', 1),
 ('a02a01', 2),
 ('a02a02', 2),
+('a02a03', 2),
+('a02a04', 2),
+('a02a05', 2),
+('a04a02', 2),
+('a03a01', 3),
+('a03a02', 3),
+('a03a03', 3),
+('a03a04', 3),
+('a03a05', 3),
+('a04a01', 4),
+('a04a03', 4),
+('a04a04', 4),
+('a04a05', 4),
 ('a05a01', 5),
-('a05a02', 5);
+('a05a02', 5),
+('a05a03', 5),
+('a05a04', 5),
+('a05a05', 5);
 
 -- --------------------------------------------------------
 
@@ -46,16 +87,11 @@ CREATE TABLE IF NOT EXISTS `aviao` (
 --
 
 INSERT INTO `aviao` (`cod`, `marca`, `modelo`, `voo_cod`) VALUES
-(1, '1', '1', 1),
-(2, '2', '2', 1),
-(3, '3', '3', 2),
-(4, '4', '4', 2),
-(5, '5', '5', 3),
-(6, '6', '6', 3),
-(7, '7', '7', 4),
-(8, '8', '8', 4),
-(9, '9', '9', 5),
-(10, '10', '10', 5);
+(1, 'wolksvagem', 'L171', 1),
+(2, 'Goow', 'G129', 2),
+(3, 'Fordy', 'F01', 3),
+(4, 'Khaizer', 'K7', 4),
+(5, 'Fiatche', 'Fdos', 5);
 
 -- --------------------------------------------------------
 
@@ -69,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   `assento_cod` varchar(45) NOT NULL,
   PRIMARY KEY (`cod`),
   KEY `fk_reserva_assento_idx` (`assento_cod`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Extraindo dados da tabela `reserva`
@@ -78,7 +114,8 @@ CREATE TABLE IF NOT EXISTS `reserva` (
 INSERT INTO `reserva` (`cod`, `cpf`, `assento_cod`) VALUES
 (1, '123', 'a01a01'),
 (2, '123', 'a02a01'),
-(3, '123', 'a05a01');
+(3, '123', 'a05a01'),
+(8, '09817224660', 'a01a02');
 
 -- --------------------------------------------------------
 
@@ -100,11 +137,11 @@ CREATE TABLE IF NOT EXISTS `voo` (
 --
 
 INSERT INTO `voo` (`cod`, `origem`, `datasaida`, `destino`, `datachegada`) VALUES
-(1, '1', '1', '1', '1'),
-(2, '2', '2', '2', '2'),
-(3, '3', '3', '3', '3'),
-(4, '4', '4', '4', '4'),
-(5, '5', '5', '5', '5');
+(1, 'passos', '10/10/2018-11:15', 'alpinopolis', '10/10/2018-11:20'),
+(2, 'passos', '15/11/2018-12:15', 'salvador', '19/11/2018-12:45'),
+(3, 'passos', '15/11/2018-12:15', 'formiga', '15/11/2018-15:45'),
+(4, 'passos', '15/11/2018-12:15', 'gloria', '15/11/2018-15:45'),
+(5, 'passos', '15/11/2018-12:15', 'itau', '15/11/2018-12:15');
 
 --
 -- Constraints for dumped tables
@@ -127,3 +164,7 @@ ALTER TABLE `aviao`
 --
 ALTER TABLE `reserva`
   ADD CONSTRAINT `fk_reserva_assento` FOREIGN KEY (`assento_cod`) REFERENCES `assento` (`cod`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

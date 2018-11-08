@@ -89,14 +89,11 @@ public class TelaCliente extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setText("1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-
-        jTextField2.setText("1");
 
         jLabel2.setText("Origem");
 

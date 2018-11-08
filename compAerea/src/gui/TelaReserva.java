@@ -124,7 +124,7 @@ public class TelaReserva extends javax.swing.JFrame {
             Scanner s = new Scanner(System.in);
             PrintStream saida = new PrintStream(cliente.getOutputStream());
             //saida.println("1");//Insira aqui a saida desejado para inserção na tabela reservas!  
-            saida.println("1");
+            saida.println(codAviao);
         } catch (IOException ex) {
             Logger.getLogger(TelaReserva.class.getName()).log(Level.SEVERE, null, ex);
         }
